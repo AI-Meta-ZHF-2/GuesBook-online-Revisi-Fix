@@ -1,0 +1,106 @@
+:root {
+  --bg: #ffffff;
+  --text: #222;
+  --box: #f3f3f3;
+  --input: #fff;
+  --button: #4CAF50;
+  --button-danger: #e74c3c;
+  --shadow: rgba(0,0,0,0.15);
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #fff;
+  --box: #1e1e1e;
+  --input: #2a2a2a;
+  --shadow: rgba(255,255,255,0.1);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 60%;
+  margin: auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.form-box {
+  background: var(--box);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow);
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: var(--input);
+  color: var(--text);
+}
+
+.btn-primary {
+  background-color: var(--button);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background-color: var(--button-danger);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.theme-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}

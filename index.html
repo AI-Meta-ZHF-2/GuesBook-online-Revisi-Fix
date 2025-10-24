@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>Buku Tamu Online</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Tombol Dark/Light -->
+    <button id="theme-toggle" onclick="toggleTheme()" class="theme-btn">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div class="container">
+        <h1>Buku Tamu Online</h1>
+
+        <form method="POST" class="form-box">
+            <label>Nama:</label>
+            <input type="text" name="nama" required>
+
+            <label>Kontak:</label>
+            <input type="text" name="kontak" required>
+
+            <label>Institusi / Asal:</label>
+            <input type="text" name="instansi" required>
+
+            <label>Tujuan Kunjungan:</label>
+            <input type="text" name="tujuan" required>
+
+            <label>Catatan (opsional):</label>
+            <textarea name="catatan" placeholder="Boleh dikosongkan"></textarea>
+
+            <button type="submit" name="action" value="submit" class="btn-primary">Kirim</button>
+        </form>
+
+        <form method="POST" class="clear-box">
+            <button type="submit" name="action" value="clear" class="btn-danger">Hapus Semua</button>
+        </form>
+
+        {% if data %}
+        <h2>Daftar Tamu</h2>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Kontak</th>
+                    <th>Institusi</th>
+                    <th>Tujuan</th>
+                    <th>Catatan</th>
+                </tr>
+                {% for guest in data %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ guest[0] }}</td>
+                    <td>{{ guest[1] }}</td>
+                    <td>{{ guest[2] }}</td>
+                    <td>{{ guest[3] }}</td>
+                    <td>{{ guest[4] if guest[4] else "-" }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
+    </div>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const newTheme = html.getAttribute("data-theme") === "light" ? "dark" : "light";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateIcon(newTheme);
+    }
+
+    function updateIcon(theme) {
+        document.getElementById("theme-icon").textContent = theme === "dark" ? "☀" : "🌙";
+    }
+
+    window.onload = () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        updateIcon(savedTheme);
+    };
+</script>
+
+</body>
+</html>
